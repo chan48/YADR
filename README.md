@@ -14,45 +14,47 @@
 This is a collection of best of breed tools from across the web,
 from scouring other people's dotfile repos, blogs, and projects.
 
-## What is YADR?
+
+>주의: 겉보기에 좋아보여 무작정 설치하고 난 뒤, vim 키맵이 변경되서 빡치지 않게 사전에 잘 읽어보셈  
+
+
+## YADR은 또 뭔데?
 
 **YADR is an opinionated dotfile repo that will make your heart sing**
 
-  * OSX is the best OS. MacVim is the best editor. Zsh is the best shell. Pry is the best irb. Solarized is the best color scheme.
-  * Apple-style philosophy: make everything Just Work and Look Good. Don't worry about too many options.
-  * All common commands should be two and three character mnemonic aliases - less keystrokes, RSI reduction
-  * Avoid stressful hand motions, e.g. remap Esc to caps lock key, remap underscore to Alt-k in vim, make window management in vim easy.
-  * Easy to use plugin architecture, no config files to edit.
-  * Pick one tool and use it everywhere: vim-ize everything
-  * Beautiful, easy to read and small vimrc**
-  * No key overrides or custom hackery in vimrc, everything in well factored snippets in .vim/plugin/settings**
-  * Much larger list of vim plugins than Janus, specifically geared to Ruby/Rails/Git development.
-  * Optimized support for Solarized color scheme only, everything guaranteed to Look Good. Your eyes will thank you.
-  * All plugins tested with Solarized and custom color maps provided where needed to ensure your eyes will not bleed.
-  * No configuration file to maintain. YADR uses tiny ruby scripts to wrap git submodule maintenance.
-  * Much cleaner vimrc that keps keymaps isolated to a plugin file (not in the main vimrc).
-  * All keymaps and customization in small, easy to maintain files under .vim/plugin/settings
-  * More than just vim plugins - great shell aliases, osx, and irb/pry tweaks to make you more productive.
+  * 맥은 겁나 좋은 운영체제 잖아? MacVim 역시 최고의 편집기! Zsh도.. 최고의 셸? 글구,, Pry .. Solarized 역시 최고의 컬러 스키마지. 
+  * 애플 스타일 철학을 적용시켰다. 걍 모든게 제대로 동작하고 보기 끝내줘. 옵션이 많다고 겁먹지 마셈.
+  * 자주 쓰는 모든 명령어는 두세자로 된 줄임말이 지원되니 손가락을 움직이는게 덜할거야. 
+  * 몇가지 빡치는 키맵을 피하고 vim에서 윈도우 관리도 쉽다. 
+  * 플러그인 아키텍트가 사용하기 쉽게 되어 있고 설정파일도 건드릴게 없어. (뻥이야;;)
+  * 걍 하나 골라서 어디에나 적용하셈. vim 이 짱먹는 세상!
+  * 겁나 이쁘고 읽기 편하고 쌈빡한 vimrc를 제공한다네.. **
+  * 키 오버라이딩이나 해킹짓거리를 안해. 걍 모든 설정은 .vim/plugin/settings 아래에 있어. 
+  * Janus보다 vim 플러그인 리스트가 많은데다 Ruby/Rails/Git 개발환경으로 잘 맞아 떨어지지. 
+  * Solarized 색상 스키마에 최적화 되어 있어서 일단 보는 것은 끝내준다. 눈이 호강할거야. 
+  * 모든 플러그인은 Solarized와 테스트 했고 특정 색상을 쓴 곳은 눈이 아프지 않도록 신경쓰이는 곳에 적용했다.
+  * 설정파일은 관리할 필요없어. YADR은 겁나 간단한 ruby 스크립트 파일로 git submodule을 관리하는데 쓸일뿐이야.
+  * 플러그인 파일과 동떨어져 vimrc 파일 내용이 일단 깔끔해. 
+  * 키맵파일과 기타 설정은 .vim/plugins/settings 아래에서 관리해야해 
+  * vim 플러그인 그 이상의 집합이라고나 할까.. - 있어보이는 명령어 별명과 기타 osx,irb/pry 트윅들로 딴짓거리하는데 최고의 환경을 제공한다네~!
 
-## Screenshot
+## 스크린샷
 ![screenshot](http://i.imgur.com/3C1Ze.png)
 
-# Installation
+# 설치과정
 
-Installation is automated via `rake` and the `yadr` command. To get
-started please run:
+`rake`와 `yadr`명령어로 자동 설치되니 걍 생각하지 말고 Copy & Paste 하면되:
 
 ```bash
 git clone https://github.com/skwp/dotfiles ~/.yadr
 cd ~/.yadr && rake install
 ```
 
-**Note:** YADR will automatically install all of its subcomponents. If you want to be asked
-about each one, use `ASK=true rake install`
+**주의하지마:** YADR은 하위 컴포넌트를 자동으로 설치하므로 각 항목마다 동의를 받고 싶으면 다음과 같이 실행한다: `ASK=true rake install`
 
-### Upgrading
+### 업데이트 하기
 
-Upgrading is easy.
+겁나 쉽게 된다.
 
 ```bash
 cd ~/.yadr
@@ -60,37 +62,34 @@ git pull origin master
 rake update
 ```
 
-# What's included, and how to customize?
+# 근까.. 뭐가 들어있는데? 글구 어떻게 고치냐?
 
-Read on to learn what YADR provides!
+귀찮지만 YADR을 좀 사용하고 싶다면 계속 읽어.
 
-### Public service announcement: stop abusing your hands!
+### Public service announcement: 손가락에 테러를 가하지 말자~!
 
 [Remap caps-lock to escape with PCKeyboardHack](http://pqrs.org/macosx/keyremap4macbook/pckeyboardhack.html)
 
-The escape key is the single most used key in vim.
-Old keyboards used to have Ctrl where caps lock is today. But it's even better if you put escape there.
-If you're hitting a small target in the corner, you are slowing yourself down considerably, and probably damaging your hands with repetitive strain injuries.
+ESC 키는 vim 에서 겁나 중요하고 많이 쓰이는 키인데 옛날에 나온 키보드는 컨트롤키(CTRL)가 캡스락(CapsLock) 자리에 있어서 그 자리를 ESC에다 배정하면 좋을수도 있잖아?
+자꾸 구석탱이에 있는 작은 걸 치다보면 겁나게 작업이 느려질 수 있으고 손도 망가지고,,,  (-__- ;;; 된장)
 
 ### [Homebrew](http://mxcl.github.com/homebrew/)
 
-Homebrew is _the missing package manager for OSX_. Installed automatically.
+Homebrew는 OSX 배포본과 같이 있어야 하는데 애플 애들이 빠트린거야. 자동으로 설치할 것임. 
 
-We automatically install a few useful packages including ack, ctags, git, and hub
-You can install macvim from brew as well, or download it from their website.
+글구, 몇가지 필요한 것들을 설치할 건데,, ack, ctags, git,hub 등등이지. macvim은 brew를 통해 설치하든가 아니면 걔네들 웹사이트에서 받아서 넣어도 되.
 
 ```bash
 brew install ack ctags git hub macvim tmux reattach-to-user-namespace
 ```
 
-### Github Issues: [ghi gem](https://github.com/stephencelis/ghi)
+### Github 소식: [ghi gem](https://github.com/stephencelis/ghi)
 
-We include the `ghi` command. Try `ghi list` and have fun managing issues from command line!
+`ghi` 명령어도 설치된다. `ghi list` 명령을 때려보면 콘솔로 폼나게 이슈를 관리할 수 있을거야.
 
-### Ruby Debugger
+### Ruby 디버거
 
-This gem is optonal and not included. It's used to give you visual IDE-style debugging within vim, combined
-with the vim-ruby-debugger plugin. To install:
+이건 옵션이라 포함되어 있지않다. vim에서 있어보이는 IDE 스타일의 디버깅을 할때 쓰이는데 쓸려면 다음과 같이 플러그인을 설치하셈:
 
 ```bash
 gem install ruby-debug-ide
@@ -98,57 +97,49 @@ gem install ruby-debug-ide
 
 ### ZSH
 
-After a lifetime of bash, I am now using ZSH as my default shell because of its awesome globbing
-and autocomplete features (the spelling fixer autocomplete is worth the money alone).
+bash를 줄곧 써왔는데 요즘은 ZSH을 쓰고있다.  기본 셸로 대체해서 쓰는데,  이거 좀 죽여주거든. 특히 globbing이랑 자동 완성 기능은 짱먹고 있음. 
+bash에서 zsh로 마이그레이트하는데 별 문제없고 zshrc 에서 몇몇 기능을 보강해주는데 히스토리를 거꾸로 검색하는 Ctrl-R 같은 거 말야..
 
-Migrating from bash to zsh is essentially pain free. The zshrc provided here
-restores a few features that I felt was 'broken' including Ctrl-R reverse history search.
-
-Lots of things I do every day are done with two or three character
-mnemonic aliases. Please feel free to edit them:
+매일 매일 사용하는 명령어는 대부분 몇글자로 처리하지. 마구 마구 고쳐도 되:
 
     ae # alias edit
     ar # alias reload
 
 ### [Prezto](https://github.com/sorin-ionescu/prezto)
 
-For a more complete Zsh experience we use **[Prezto](http://github.com/sorin-ionescu/prezto)**.
-Prezto is included as a submodule.
+Zsh를 제대로 쓰려고 **[Prezto](http://github.com/sorin-ionescu/prezto)**를 서브모듈로 이미 포함하고 있음.
 
-### Adding your own ZSH theme
+### 각자 스타일의 테마를 ZSH에 추가하기
 
-If you want to add your own zsh theme, you can place it into ~/.zsh.prompts and it will automatically be picked up by the prompt loader.
-
-Make sure you follow the naming convention of `prompt_[name]_setup`
+스타일 대로 쓰고 싶다면 ~/.zsh.prompts 에 넣어 두면 됨. 자동으로 처리될 것임. 근데, 이름짓는 규정대로 `prompt_[name]_setup` 처럼 했는지 확인해야함. 
 
 ```
 touch ~/.zsh.prompts/prompt_mytheme_setup
 ```
 
-Check out ~/.yadr/zsh/prezto-themes/prompt_skwp_setup for an example of how to write a prompt.
-See also the [Prezto](https://github.com/sorin-ionescu/prezto) project for more info on themes.
+~/.yadr/zsh/prezto-themes/prompt_skwp_setup 에서 예제를 보고 어떻게 프롬프트를 쓰는지 확인해보셈. 
+[Prezto](https://github.com/sorin-ionescu/prezto) 프로젝트에 더 자세한 사항이 있음.
 
-### Customizing ZSH & Picking a theme
+### ZSH 손좀 보기 & 테마 선택하기 
 
-If you want to customize your zsh experience, yadr provides two hooks via ~/.zsh.after/ and ~/.zsh.before/ directories.
-In these directories, you can place files to customize things that load before and after other zsh customizations that come from ~/.yadr/zsh/*
+zsh 환경을 좀 손좀 보려면  ~/.zsh.after/ 하고 ~/.zsh.before/ 디렉토리 두개의 yadr 훅을 손봐야 함: 그 폴더에서 ~/.yadr/zsh/* 에 있는 다른 zsh 설정파일을 읽기 전이나 후에 적용할 것들을 넣어 두면 되는거지.
 
-For example, to override the theme, you can do something like this:
+예를들어, 테마를 오버랑이딩 하려면 이것 처럼 하든가:
 ```
 echo "prompt skwp" > ~/.zsh.after/prompt.zsh
 ```
 
-Next time you load your shell, this file will be read and your prompt will be the skwp prompt. Use `prompt -l` to see the available prompts.
+다음번에 셸이 뜰때 읽혀지고 skwp(?) 프롬프트가 적용될거야. `prompt -l` 하면 사용가능한 프롬프트가 뜰 것임.
 
-### Included ZSH Customizations
+### 이미 적용되어 있는 ZSH 커스토마이즈 설정들
 
- * Vim mode
- * Bash style ctrl-R for reverse history finder
- * Ctrl-x,Ctrl-l to insert output of last command
- * Fuzzy matching - if you mistype a directory name, tab completion will fix it
- * [fasd](https://github.com/clvv/fasd) integration - hit `z` and partial match for recently used directory. Tab completion enabled.
- * Syntax highlighting as you type commands
- * Lots more!
+ * Vim 모드!!!
+ * Bash 스타일의 ctrl-R로 히스토리를 거꾸로 검색
+ * 마지막 명령어의 출력을 끼워 넣기: Ctrl-x,Ctrl-l
+ * Fuzzy 매칭 - 폴더 이름을 잘못 쓰거나 했더라도 탭을 누르면  이름을 고쳐서 완성해줘~!
+ * [fasd](https://github.com/clvv/fasd) 통합되어 있음 - 최근 사용된 폴더를  `z`키와 탭을 눌러 자동완성할 수있음.
+ * 입력하는 것에 따라 문법 강조
+ * 글구, 더 많다!
 
 ### [Pry](http://pry.github.com/) 
 Pry offers a much better out of the box IRB experience with colors, tab completion, and lots of other tricks. You can also use it

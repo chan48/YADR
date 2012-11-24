@@ -180,7 +180,7 @@ gitconfig 자체가 사용자 정보를 담고있지 않기 때문에 환경변�
 .gemrc 파일이 제공되는데,  매번 타이핑 안해도 기본으로 설정되어 있음:   
 `gem install whatever --no-ri --no-rdoc`. `--no-ri --no-rdoc`
 
-### 모든 것을 vim 방식으로 맞출려고 함
+### 모든 것을 vim 방식으로!
 
 The provided inputrc and editrc will turn your various command line tools like mysql and irb into vim prompts. There's
 also an included Ctrl-R reverse history search feature in editrc, very useful in irb.
@@ -192,15 +192,17 @@ also an included Ctrl-R reverse history search feature in editrc, very useful in
 
 ### Vim 키맵
 
-The files in vim/plugin/settings are customizations stored on a per-plugin
-basis. The main keymap is available in skwp-keymap.vim, but some of the vim
-files contain key mappings as well (TODO: probably will move them out to skwp-keymap.vim)
+vim/plugin/settings 아래 파일은 각각의 플러그인에 해당하는 설정파일들이다.  핵심  키맵파일은 skwp-keymap.vim 이지만 몇몇 vim 파일들도 키 맵핑 설정을 담고 있다. (그 설정들을 모두 skwp-keymap.vim 로 이동시킬 예정)
 
 ### vim 키 맵핑 디버깅
 
-If you are having unexpected behavior, wondering why a particular key works the way it does,
-use: `:map [keycombo]` (e.g. `:map <C-\>`) to see what the key is mapped to. For bonus points, you can see where the mapping was set by using `:verbose map [keycombo]`.
-If you omit the key combo, you'll get a list of all the maps. You can do the same thing with nmap, imap, vmap, etc.
+만약 동작이 이상해서 뭣 때문에 그런지 알수 있는 방법이 있다:  
+`:map [keycombo]`  (예 `:map <C-\>`) 
+
+키가 맵핑되어 있는 상태를 보여준다.  설정이 어디에 있는지도 알고싶다면 다음 명령을 해보라:  
+`:verbose map [keycombo]`
+  
+keycombo를 생략하면 모든 맵을 리스팅 해준다. nmap, imap, vmap, 등등에도 마찬가지로 적용될 수 있다.
 
 
 #### 커서 움직이기

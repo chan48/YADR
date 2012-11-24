@@ -147,22 +147,22 @@ as an actual debugger on MRI 1.9.2+ by installing [pry-debugger](https://github.
 
 [Learn more about YADR's pry customizations and how to install](https://github.com/skwp/dotfiles/blob/master/README-pry.md)
 
-### Git User Info
+### Git 사용자 정보
 
-Since the gitconfig doesn't contain the user info, I recommend using env variables. Put the following in
-your `~/.secrets` file which is automatically referenced by the provided zshrc:
+gitconfig 자체가 사용자 정보를 담고있지 않기 때문에 환경변수를 사용할 것을 권한다. 아래 환경변수를 `~/.secrets` 파일에 넣어두면 zshrc 에서 참조할 것이다:
 
-    # Set your git user info
-    export GIT_AUTHOR_NAME='Your Name'
-    export GIT_AUTHOR_EMAIL='you@domain.com'
-    export GIT_COMMITTER_NAME='Your Name'
-    export GIT_COMMITTER_EMAIL='you@domain.com'
+>    # git 사용자 정보를 넣어두셈  
+>    export GIT_AUTHOR_NAME='Your Name'  
+>    export GIT_AUTHOR_EMAIL='you@domain.com'  
+>    export GIT_COMMITTER_NAME='Your Name'  
+>    export GIT_COMMITTER_EMAIL='you@domain.com'  
+>  
+>    # 귀찮다면, GitHub 로그인 정보도 넣어두면 좋지  
+>    export GITHUB_USER='your_user_name'  
+>    export GITHUB_TOKEN='your_github_token'    
+  
 
-    # Optionally, set your GitHub credentials
-    export GITHUB_USER='your_user_name'
-    export GITHUB_TOKEN='your_github_token'
-
-### Git Customizations:
+### Git 커스토마이징:
 
   * `git l` - a much more usable git log
   * `git b` - a list of branches with summary of last commit
@@ -177,34 +177,33 @@ your `~/.secrets` file which is automatically referenced by the provided zshrc:
 
 ### RubyGems
 
-A .gemrc is included. Never again type `gem install whatever --no-ri --no-rdoc`. `--no-ri --no-rdoc` is done by default.
+.gemrc 파일이 제공되는데,  매번 타이핑 안해도 기본으로 설정되어 있음:   
+`gem install whatever --no-ri --no-rdoc`. `--no-ri --no-rdoc`
 
-### Vimization of everything
+### 모든 것을 vim 방식으로 맞출려고 함
 
 The provided inputrc and editrc will turn your various command line tools like mysql and irb into vim prompts. There's
 also an included Ctrl-R reverse history search feature in editrc, very useful in irb.
 
-### Vim Configuration
+### Vim 환경설정
 
-The .vimrc is well commented and broken up by settings. I encourage you
-to take a look and learn some of my handy aliases, or comment them out
-if you don't like them, or make your own.
+.vimrc 파일에 설명이 단위별로 잘 쪼개져 있으니 들여다보고 손수 고쳐서 사용하길 바람.
 
 
-### Vim Keymaps
+### Vim 키맵
 
 The files in vim/plugin/settings are customizations stored on a per-plugin
 basis. The main keymap is available in skwp-keymap.vim, but some of the vim
 files contain key mappings as well (TODO: probably will move them out to skwp-keymap.vim)
 
-### Debugging vim keymappings
+### vim 키 맵핑 디버깅
 
 If you are having unexpected behavior, wondering why a particular key works the way it does,
 use: `:map [keycombo]` (e.g. `:map <C-\>`) to see what the key is mapped to. For bonus points, you can see where the mapping was set by using `:verbose map [keycombo]`.
 If you omit the key combo, you'll get a list of all the maps. You can do the same thing with nmap, imap, vmap, etc.
 
 
-#### Navigation
+#### 커서 움직이기
 
  * `,z` - go to previous buffer (:bp)
  * `,x` - go to next buffer (:bn)
@@ -229,7 +228,7 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * the `#` key now surrounds with `#{}`, so `ysaw#` (surround around word) `#{foo}`
  * `=` surrounds with `<%= erb tag %>`; `-` for `<% this %>`. So, `yss=` or `yss-` to wrap code
 
-#### Search/Code Navigation
+#### 검색하기 / 코드 찾기
 
  * `,f` - instantly Find definition of class (must have exuberant ctags installed)
  * `,F` - same as `,f` but in a vertical split
@@ -253,7 +252,7 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * `Ctrl-s` - Open related spec in a split. Similar to :A and :AV from rails.vim but is also aware of the fast_spec dir and faster to type
  * `,,w` (alias `,<esc>`) or `,,b` (alias `,<shift-esc>`) - EasyMotion, a vimperator style tool that highlights jump-points on the screen and lets you type to get there.
 
-#### File Navigation
+#### 파일 네비게이션
 
  * `,t` - CtrlP fuzzy file selector
  * `,b` - CtrlP buffer selector
@@ -284,18 +283,18 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * `,#` `,"` `,'` `,]` `,)` `,}` to surround a word in these common wrappers. the # does #{ruby interpolation}. works in visual mode (thanks @cj)
  * `Cmd-'`, `Cmd-"`, `Cmd-]`, `Cmd-)`, etc to change content inside those surrounding marks. You don't have to be inside them.
 
-#### Tab Navigation
+#### 탭 돌아다니기
 
  * `Ctrl-H` and `Ctrl-L` - left an right on tabs
  * Use `Cmd-1` thru `Cmd-9` to switch to a specific tab number (like iTerm) - and tabs have been set up to show numbers
 
-#### Window Navigation
+#### 윈도우 돌아다니기
 
  * `Ctrl-h,l,j,k` - to move left, right, down, up between windows
  * `Q` - Intelligent Window Killer. Close window `wincmd c` if there are multiple windows to same buffer, or kill the buffer `bwipeout` if this is the last window into it.
  * Cmd-Arrow keys - resize windows (up/down for vertical, left=make smaller horizontally, right=make bigger horizontally)
 
-#### Splits
+#### 화면 나누기
 
  * `vv` - vertical split (`Ctrl-w,v`)
  * `ss` - horizontal split (`Ctrl-w,s`)
@@ -303,7 +302,7 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * `,qc` - close quickfix
  * `,gz` - zoom a window to max size and again to unzoom it (ZoomWin plugin, usually `C-w,o`)
 
-#### NERDTree Project Tree
+#### NERDTree 프로젝트 트리
 
  * `Cmd-Shift-N` - NERDTree toggle
  * `Ctrl-\` - Show current file tree
@@ -337,7 +336,7 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
 
  * Visual ruby debugger included. All keys remapped to `,d(something)` such as `,dn` for Debugger Next or `,dv` for Debugger Variables. Use `:help ruby-debugger` for more info, but keep in mind the new key maps (see vim/plugin/settings/vim-ruby-debugger.vim)
 
-#### Comments
+#### 주석
 
  * `Cmd-/` - toggle comments (usually gcc from tComment)
  * `gcp` (comment a paragraph)
@@ -347,11 +346,11 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * :Wrap - wrap long lines (e.g. when editing markdown files).
  * Cmd-[j, k, $, 0, ^] - navigate display lines.
 
-### Included vim plugins
+### 배포본에 포함된 vim 플러그인
 
-#### Navigation
+#### 네비게이션
 
- * NERDTree - everyone's favorite tree browser
+ * NERDTree - 나 빼고 모두가 좋아하는 tree 브라우저
  * NERDTree-tabs - makes NERDTree play nice with MacVim tabs so that it's on every tab
  * ShowMarks - creates a visual gutter to the left of the number column showing you your marks
  * EasyMotion - hit ,<esc> (forward) or ,<Shift-Esc> (back) and watch the magic happen. Just type the letters and jump directly to your target - in the provided vimrc the keys are optimized for home row mostly. Using @skwp modified EasyMotion which uses vimperator-style two character targets.
@@ -365,14 +364,14 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * gitv - use :gitv for a better git log browser
  * GitGrep - much better than the grep provided with fugitive; use :GitGrep or hit K to grep current word
 
-#### Colors
+#### 색상
 
  * AnsiEsc - inteprets ansi color codes inside log files. great for looking at Rails logs
  * solarized - a color scheme scientifically calibrated for awesomeness (including skwp mods for ShowMarks)
  * csapprox - helps colors to be represented correctly on terminals (even though we expect to use MacVim)
  * Powerline - beautiful vim status bar. Requires patched fonts (installed from fonts/ directory)
 
-#### Coding
+#### 코딩
 
  * tComment - gcc to comment a line, gcp to comment blocks, nuff said
  * sparkup - div.foo#bar - hit `ctrl-e`, expands into `<div class="foo" id="bar"/>`, and that's just the beginning
@@ -435,20 +434,20 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * sass-status - decorates your status bar with full nesting of where you are in the sass file
 
 
-### Overriding vim settings
+### vim 셋팅 덮어쓰기
 
 You may use `~/.vimrc.before` for settings like the __leader__ setting.
 You may `~/.vimrc.after` (for those transitioning from janus) or in `~/.yadr/vim/after/.vimrc.after` for any additional overrides/settings.
 If you didn't have janus before, it is recommended to just put it in `~/.yadr/vim/after` so you can better manage your overrides.
 
 
-### Adding your own vim plugins
+### vim 플러그인 추가하기
 
 YADR comes with a dead simple plugin manager that just uses git submodules, without any fancy config files.
 
     yav -u https://github.com/airblade/vim-rooter
 
-Delete a plugin (Coming Soon)
+플러그인 삭제는 지금 안돼 -__-), 곧 될 것임
 
    ydv -p airblade-vim-rooter
 
@@ -456,7 +455,7 @@ The aliases (yav=yadr vim-add-plugin) and (yuv=yadr vim-update-all-plugins) live
 You can then commit the change. It's good to have your own fork of this project to do that.
 
 
-## Miscellaneous
+## 기타
 
 
 ### OSX Hacks
@@ -472,7 +471,7 @@ These hacks are Lion-centric. May not work for other OS'es. My favorite mods inc
   * Display the ~/Library folder in finder (hidden in Lion)
 
 
-### Other recommended OSX tools
+### 쓸만한 OSX 툴
 
  * NValt - Notational Velocity alternative fork - http://brettterpstra.com/project/nvalt/ - syncs with SimpleNote
  * Vimium for Chrome - vim style browsing. The `f` to type the two char alias of any link is worth it.
@@ -501,12 +500,12 @@ Please explore these people's work.
 
 ### Contributors
 
- * Initial Version: @skwp
- * Cleanup, auto installer: @kylewest
- * Switch from oh-my-zsh to Presto: @JeanMertz
+ * 초기 버전: @skwp
+ * 자동 설치 및 마무리: @kylewest
+ * oh-my-zsh에서 Presto로 변경: @JeanMertz
 
 
-### For more tips and tricks
+### 좀 더 알아보려면
 
-Follow my blog: http://yanpritzker.com
+원 저작자 블로그를 참조: http://yanpritzker.com
 
